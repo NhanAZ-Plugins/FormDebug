@@ -17,16 +17,16 @@ class Main extends PluginBase implements Listener {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
-	public function onDataPacketReceive(DataPacketReceiveEvent $event) {
+	public function onDataPacketReceive(DataPacketReceiveEvent $event): void {
 		$packet = $event->getPacket();
 
 		if ($packet instanceof ModalFormResponsePacket) {
-			$player = $event->getOrigin()->getPlayer()->getName();
+			$player = $event->getOrigin()->getPlayer()?->getName() ?? "<unattached session>";
 			var_dump($player, $packet);
 		}
 	}
 
-	public function onDataPacketSend(DataPacketSendEvent $event) {
+	public function onDataPacketSend(DataPacketSendEvent $event): void {
 		$packets = $event->getPackets();
 
 		foreach ($packets as $packet) {
@@ -34,7 +34,7 @@ class Main extends PluginBase implements Listener {
 				$targetArr = [];
 				$targets = $event->getTargets();
 				foreach ($targets as $target) {
-					array_push($targetArr, $target->getPlayer()->getName());
+					$targetArr[] = $target->getPlayer()?->getName() ?? "<unattached session>";
 				}
 				var_dump($targetArr, $packet);
 			}

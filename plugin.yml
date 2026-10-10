@@ -1,8 +1,9 @@
 ---
 name: FormDebug
-version: 0.0.2
+version: 0.0.3
 main: NhanAZ\FormDebug\Main
 api: 5.0.0
-website: https://github.com/NhanAZ
+website: https://github.com/NhanAZ-Plugins/FormDebug
 author: NhanAZ
+description: Inspect modal form packets on Axolotl-PM development servers.
 ...
